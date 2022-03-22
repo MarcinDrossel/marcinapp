@@ -18,6 +18,7 @@ export default class HelloWorldApp extends Component {
       <Greeting name='Filip' />
       <Greeting name='Asia' />
       <Greeting name='Olek' />
+      <Greeting name='Andrzej' />
     </View>
   );
  };
