@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import { Image, View, Text } from 'react-native';
 
-class Greeting extends Component {
+class Blink extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {isShowingText: true};
+
+    setInterval(() => {
+      this.setState(previoursState => ({
+        isShowingText: !previoursState.isShowingText, 
+      }));
+    }, 1000);
+  }
+ 
   render() {
-    return (
-      <Text>Cześć! {this.props.name}</Text>
+    const display = this.state.isShowingText ? this.props.text : '';
+    return(
+      <Text>{display}</Text>
     );
   }
 }
 
-export default class HelloWorldApp extends Component {
-  render(){
-  return (
-    <View style={{alignItems: 'center'}}>
-      <Greeting name='Ala' />
-      <Greeting name='Marcin' />
-      <Greeting name='Filip' />
-      <Greeting name='Asia' />
-      <Greeting name='Olek' />
-      <Greeting name='Andrzej' />
-      <Greeting name='Marcin' />
-    </View>
-  );
- };
+export default class BlinkApp extends Component {
+  render() {
+    return (
+      <View>
+        <Blink text='I love Blink' />
+      </View>
+    );
+  }
 }
