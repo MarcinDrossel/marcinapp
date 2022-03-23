@@ -1,24 +1,53 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TextInput, } from 'react-native';
+import { Alert, StyleSheet, View, Button, } from 'react-native'
 
-export default class Translation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
+export default class ButtonBasic extends Component {
+  onPressButton() {
+    Alert.alert('Nacisłeś guzik!');
   }
-
-render () {
-  return(
-    <View style={{padding: 10}}>
-      <TextInput 
-      xstyle={{height: 40}}
-      placeholder='Wpisz cokolwiek...'
-      onChangeText={(text) => this.setState({text})} 
-      />
-      <Text style={{padding: 40, fontSize: 42}}>
-        {this.state.text.split(' ').map(word => word && 'X').join(' ')}
-      </Text>
-    </View>
+  render() {
+    return(
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+        <Button 
+        onPress={this.onPressButton} 
+        title='Nasiśnij mnie' 
+        />
+      </View>
+        <View style={styles.buttonContainer}>
+          <Button 
+            onPress={this.onPressButton}
+            title='Naciśnij mnie'
+            color='#841584'
+          />
+        </View>
+        <View style={styles.alternativeLayoutButtonContainer}>
+          <Button
+            onPress={this.onPressButton}
+            title='To wygląda dobrze'
+          />
+          <Button
+            onPress={this.onPressButton}
+            title='OK!'
+            color='#841584'
+          />
+        </View>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    margin: 20,
+  },
+  alternativeLayoutButtonContainer: {
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+});
