@@ -1,45 +1,39 @@
 import React, { Component } from 'react';
 import {
-  ScrollView,
-  Image,
+  FlatList,
+  StyleSheet,
+  View,
   Text,
 } from 'react-native';
 
-export default class ScrollingDown extends Component {
+export default class FlatListBasic extends Component {
   render() {
-    return (
-      <ScrollView>
-        <Text style={{fontSize: 96}}>Scroll me plz</Text>
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Text style={{fontSize: 96}}>Scroll me plz</Text>
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Text style={{fontSize: 96}}>Scroll me plz</Text>
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Text style={{fontSize: 96}}>Scroll me plz</Text>
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Text style={{fontSize: 96}}>Scroll me plz</Text>
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-        <Image style={{width: 200, height: 200,}} source={{uri: 'https://cdn-images-1.medium.com/max/796/1*jh6bmapyE8nPWju7W_7qEw.png'}} />
-      </ScrollView>
+    return(
+      <View style={styles.container}>
+        <FlatList
+        data={[
+          {key: 'Devin'},
+          {key: 'Jackson'},
+          {key: 'Joel'},
+          {key: 'John'},
+          {key: 'Jilliam'},
+          {key: 'Julie'},
+        ]}
+        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        />
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 22,
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+});
