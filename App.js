@@ -1,48 +1,38 @@
-import React, { Component } from 'react';
-import {
-  FlatList,
-  ActivityIndicator,
-  View,
-  Text,
-} from 'react-native';
-
-export default class FetchExample extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {isLoading: true};
+const request = new XMLHttpRequest();
+request.onreadystatechange = (e) => {
+  if (request.readyState !== 4) {
+    return;
   }
-  
-  async componentDidMount() {
-    try {
-      const response = await fetch ('https://facebook.github.io/react-native/movies.json');
-      const responseJson = await response.json();
-
-      this.setState({
-        isLoading: false,
-        dataSource: responseJson.movies,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  if (request.status === 200) {
+    console.log('success'); 
+  } else {
+    console.warn('error')
   }
+};
 
-  render() {
-    if (this.state.isLoading) {
-      return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator />
-        </View>
-      );
-    }
+request.open('GET', 'http://mywebsite.com/endpoint')
+request.send();
 
-    return(
-      <View style={{flex: 1, paddingTop: 20}}>
-        <FlatList
-          data={this.state.dataSource}
-          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
-          keyExtractor={(item, index) => index}
-          />
-      </View>
-    );
-  }
-}
+//WebSocket
+
+const ws = new WebSocket('ws://host.com/path');
+
+ws.onopen = () => {
+  //otwarcie połączenia
+  ws.send('something');
+};
+
+ws.onmessage = (e) => {
+  //odbieranie wiadomości
+  console.log(e.data);
+};
+
+ws.onerror = (e) => {
+  //obsługiwanie błędu 
+  console.log(e.message);
+};
+
+ws.onclose = (e) => {
+  //zamknięcie połączenia
+  console.log(e.code, e.reason);
+};
